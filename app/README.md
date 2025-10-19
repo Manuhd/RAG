@@ -1,47 +1,95 @@
-# RAG
-RAG stands for Retrieval-Augmented Generation — it’s an AI architecture that combines information retrieval (fetching facts from external data sources) with text generation (using a large language model like GPT).
+# Minimal RAG API (Single Library)
 
-## 1. Retrieve
+This is a **lightweight Retrieval-Augmented Generation (RAG) API** using only **scikit-learn**.  
+It allows you to ask questions against a small knowledge base and returns the most relevant document.  
 
-When you ask a question, the system searches a database, documents, or vector store (like Pinecone, FAISS, or Chroma) to find the most relevant pieces of text — often called context or knowledge snippets.
+- **No PyTorch required**  
+- **Fully offline**  
+- **Single library** (`scikit-learn`)  
 
-## 2. Augment
+---
 
-The retrieved data is added to your prompt, so the LLM sees this extra context before answering.
+## Features
 
-Example prompt to the model:
+- Retrieve top matching documents based on TF-IDF similarity  
+- Fast and lightweight  
+- Expose a simple HTTP API using **FastAPI**  
+- Configurable `top_k` results  
+
+---
+
+## Installation
+
+1. **Clone the repository** or copy project files to a folder.
+
+2. **Create a virtual environment** (recommended):
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate  # Windows
 ```
-Context:
-- Green tea contains antioxidants that help reduce inflammation.
-- It may aid fat oxidation and improve metabolism.
 
-Question:
-What are the benefits of green tea?
+## Install dependencies:
+
+```
+pip install fastapi uvicorn scikit-learn
 ```
 
-## 3. Generate
+### Project Structure
+```
+RAG-google/
+│
+├─ app.py          # FastAPI application
+├─ README.md       # Project documentation
+└─ .venv/          # Virtual environment
+```
+## Usage
 
-The LLM (like GPT-5) then uses that retrieved context to generate a more accurate, factual, and grounded response.
+Run the API
+```
+uvicorn app:app --reload
+```
 
-## Common Use Cases
+The API will run at http://127.0.0.1:8000
 
-- Chatbots that answer from your company’s knowledge base
+Interactive API docs: http://127.0.0.1:8000/docs
 
-- Document Q&A (PDFs, WordPress posts, or research papers)
+Send a POST request to /ask:
+```
+{
+    "question": "What does RAG stand for?",
+    "top_k": 1
+}
+```
 
-- Customer support assistants trained on internal manuals
+Sample Response
+```
+{
+    "answer": "RAG stands for Retrieval-Augmented Generation."
+}
+```
 
-- E-commerce assistants that answer using your product data
+## How it Works
 
-## Tech Stack Example
+- Documents are vectorized using TF-IDF
 
-- A typical RAG pipeline might include:
+- Queries are transformed into vectors
 
-- Embeddings model: text-embedding-3-small or sentence-transformers
+- Cosine similarity finds the closest matching document(s)
 
-- Vector store: Pinecone, FAISS, or Chroma
+- Returns the top k results
 
-- Retriever: Searches by similarity
+## Notes
 
-- LLM: GPT-5, Claude, or Gemini to generate the final answer
+- You can modify docs in app.py to add your own knowledge base
 
+- Fully offline; no API key or internet required
+
+- Works on Windows, Mac, Linux
+
+License
+
+MIT License
+
+
+--
