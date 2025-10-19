@@ -37,7 +37,7 @@ pip install fastapi uvicorn scikit-learn
 
 ### Project Structure
 ```
-RAG-google/
+RAG/
 │
 ├─ app.py          # FastAPI application
 ├─ README.md       # Project documentation
