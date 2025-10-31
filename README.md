@@ -11,12 +11,12 @@ RAG = Search + AI
 
 This avoids hallucinations and makes answers accurate.
 
-✅ Why RAG is used?
+### Why RAG is used?
 
 Because LLMs:
-❌ Don’t know your private data
-❌ Forget updated information
-❌ Can hallucinate
+- ❌ Don’t know your private data
+- ❌ Forget updated information
+- ❌ Can hallucinate
 
 RAG solves these by connecting LLMs to:
 - ✅ PDFs
