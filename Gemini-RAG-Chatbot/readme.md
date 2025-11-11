@@ -8,8 +8,7 @@ This project is a full RAG (Retrieval-Augmented Generation) system using:
 - ✅ PDF Upload & Embeddings
 - ✅ ChatGPT-style UI (HTML + JS)
 - ✅ Voice Input + File Upload
-- ✅ Left Sidebar Conversation History
-- ✅ Multi-language support (Kannada)
+
 
 ## 🎯 What This Project Does
 
@@ -21,18 +20,13 @@ This AI chatbot can:
 
 ✅ Answer questions based on the uploaded PDF (RAG)
 
-✅ Provide answers in English or Kannada
-
 ✅ Support voice input (speech-to-text)
 
-✅ Show typing animation
 
-✅ Maintain conversation history (left sidebar like ChatGPT)
 
-✅ Chat with a modern, dark-mode, ChatGPT-style UI
 
 ### Demo
-[!alttext]()
+![alt text](https://github.com/Manuhd/RAG/blob/main/Gemini-RAG-Chatbot/RAG-project/RAG.PNG)
 
 ## 📁 FILE STRUCTURE
 
