@@ -114,18 +114,18 @@ def get_embedding(text: str):
 
 Handles PDF processing, chunking, and Chroma DB retrieval.
 
-✅ Extract PDF
-✅ Chunk text
-✅ Store embeddings
-✅ Retrieve relevant chunks
+- ✅ Extract PDF
+- ✅ Chunk text
+- ✅ Store embeddings
+- ✅ Retrieve relevant chunks
 
 ✅ 3. main.py
 
 FastAPI server with:
 
-✅ /upload_pdf → Upload + Process PDF
-✅ /ask → Ask questions with RAG
-✅ Serves frontend /static/index.html
+- ✅ /upload_pdf → Upload + Process PDF
+- ✅ /ask → Ask questions with RAG
+- ✅ Serves frontend /static/index.html
 
 ## 🌐 RUNNING THE PROJECT
 
@@ -167,16 +167,16 @@ Returns:
 
 ### 💡 FEATURES INCLUDED
 
-✅ ChatGPT-style UI
-✅ Dark mode
-✅ Left sidebar chat history
-✅ Right-aligned user messages
-✅ Left-aligned bot messages
-✅ Animated typing dots
-✅ Live voice recording animation
-✅ Upload PDFs / Images / Docs
-✅ Extract PDF + Chunking + Embeddings
-✅ Chroma Vector DB storage
-✅ Gemini LLM answer generation
-✅ Kannada & English support
-✅ User-friendly interactions
+- ✅ ChatGPT-style UI
+- ✅ Dark mode
+- ✅ Left sidebar chat history
+- ✅ Right-aligned user messages
+- ✅ Left-aligned bot messages
+- ✅ Animated typing dots
+- ✅ Live voice recording animation
+- ✅ Upload PDFs / Images / Docs
+- ✅ Extract PDF + Chunking + Embeddings
+- ✅ Chroma Vector DB storage
+- ✅ Gemini LLM answer generation
+- ✅ Kannada & English support
+- ✅ User-friendly interactions
