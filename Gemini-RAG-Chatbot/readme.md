@@ -78,8 +78,8 @@ python-dotenv
 ## 🔧 INSTALLATION & SETUP
 ### 1️⃣ Clone the Project
 ```
-git clone https://github.com/your-username/rag-gemini.git
-cd rag-gemini
+git clone https://github.com/Manuhd/RAG.git
+cd Gemini-rag-chatbot/RAG-project
 ```
 
 ### 2️⃣ Install Dependencies
