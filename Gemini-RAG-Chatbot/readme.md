@@ -1,13 +1,22 @@
 # 📘 PROJECT: Gemini RAG Chatbot (FastAPI + Chroma + ChatGPT-Style UI)
 
-This project is a full RAG (Retrieval-Augmented Generation) system using:
+Modern AI chatbots like ChatGPT work well with general knowledge, but they do not know your private documents, such as:
 
-- ✅ Python (FastAPI backend)
-- ✅ Gemini LLM (Google Generative AI)
-- ✅ Chroma Vector Database
-- ✅ PDF Upload & Embeddings
-- ✅ ChatGPT-style UI (HTML + JS)
-- ✅ Voice Input + File Upload
+- Resumes
+
+- Company policies
+
+- HR documents
+
+- Technical manuals
+
+- Training guides
+
+- PDFs
+
+- Private files
+
+This project solves that problem by creating a private, secure RAG (Retrieval-Augmented Generation) system that can understand and answer questions using your uploaded PDFs.
 
 
 ## 🎯 What This Project Does
