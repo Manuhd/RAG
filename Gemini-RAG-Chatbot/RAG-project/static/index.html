@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Chatbot (Gemini + Python)</title>
+
+<style>
+/* ---------------- GLOBAL DARK MODE ---------------- */
+body {
+    margin: 0;
+    background: #0d0d0d;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ---------------- LEFT SIDEBAR ---------------- */
+#sidebar {
+    width: 260px;
+    background: #111;
+    border-right: 1px solid #222;
+    display: flex;
+    flex-direction: column;
+}
+
+#newChatBtn {
+    padding: 15px;
+    background: #222;
+    text-align: center;
+    cursor: pointer;
+}
+#newChatBtn:hover { background: #333; }
+
+#history {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.history-item {
+    padding: 12px;
+    background: #1a1a1a;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 6px;
+}
+.history-item:hover { background: #2a2a2a; }
+
+/* ---------------- MAIN CHAT AREA ---------------- */
+#main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+#chatWindow {
+    flex: 1;
+    padding: 25px;
+    overflow-y: auto;
+}
+
+/* BOT (LEFT) + USER (RIGHT) ALIGNMENT */
+.msg-box {
+    display: flex;
+    margin: 15px 0;
+    width: 100%;
+}
+.msg-box.user { justify-content: flex-end; }
+.msg-box.bot { justify-content: flex-start; }
+
+.msg {
+    max-width: 70%;
+    padding: 14px;
+    border-radius: 12px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+}
+.user .msg {
+    background: #2b2bff;
+    text-align: right;
+}
+.bot .msg {
+    background: #2e7d32;
+    text-align: left;
+}
+
+/* ---------------- TYPING DOTS ---------------- */
+.typing-dots {
+    width: 45px;
+    display: flex;
+    justify-content: space-between;
+}
+.typing-dots span {
+    width: 8px;
+    height: 8px;
+    background: #7dff7d;
+    border-radius: 50%;
+    animation: blink 1.4s infinite;
+}
+@keyframes blink {
+    0% { opacity: .2; }
+    20% { opacity: 1; }
+    100% { opacity: .2; }
+}
+.typing-dots span:nth-child(2) { animation-delay: .2s; }
+.typing-dots span:nth-child(3) { animation-delay: .4s; }
+
+/* ---------------- INPUT BAR ---------------- */
+#inputBar {
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+    background: #111;
+    border-top: 1px solid #222;
+}
+
+#q {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    color: white;
+}
+
+/* FILE + MIC BUTTONS */
+.iconBtn {
+    background: #222;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.iconBtn:hover { background: #333; }
+
+/* Hidden file input */
+#fileUpload { display: none; }
+
+/* ---------------- MIC WAVEFORM ANIMATION ---------------- */
+.waveform {
+    width: 40px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+.waveform div {
+    width: 4px;
+    height: 10px;
+    background: #4da6ff;
+    animation: wave 0.6s infinite ease-in-out;
+}
+.waveform div:nth-child(2) { animation-delay: .1s; }
+.waveform div:nth-child(3) { animation-delay: .2s; }
+.waveform div:nth-child(4) { animation-delay: .3s; }
+
+@keyframes wave {
+    0% { height: 5px; }
+    50% { height: 20px; }
+    100% { height: 5px; }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ✅ SIDEBAR -->
+<div id="sidebar">
+    <div id="newChatBtn" onclick="newChat()">+ New Chat</div>
+    <div id="history"></div>
+</div>
+
+<!-- ✅ MAIN CHAT AREA -->
+<div id="main">
+    <div id="chatWindow"></div>
+
+    <div id="inputBar">
+        <span class="iconBtn" onclick="document.getElementById('fileUpload').click()">📁</span>
+        <input type="file" id="fileUpload" onchange="uploadFile()">
+
+        <span class="iconBtn" id="micBtn" onclick="startVoice()">🎤</span>
+
+        <input id="q" placeholder="Message AI...">
+        <button onclick="ask()">Send</button>
+    </div>
+</div>
+
+<script>
+let chatHistory = [];
+let currentChat = [];
+
+/* ✅ Add message */
+function addMessage(text, sender) {
+    let box = document.createElement("div");
+    box.className = "msg-box " + sender;
+
+    let bubble = document.createElement("div");
+    bubble.className = "msg";
+    bubble.innerText = text;
+
+    box.appendChild(bubble);
+    document.getElementById("chatWindow").appendChild(box);
+    scrollChat();
+}
+
+function scrollChat() {
+    let chat = document.getElementById("chatWindow");
+    chat.scrollTop = chat.scrollHeight;
+}
+
+/* ✅ Typing animation */
+function showTyping() {
+    let box = document.createElement("div");
+    box.className = "msg-box bot typing";
+
+    let typing = document.createElement("div");
+    typing.className = "typing-dots";
+
+    typing.innerHTML = "<span></span><span></span><span></span>";
+
+    box.appendChild(typing);
+    document.getElementById("chatWindow").appendChild(box);
+
+    scrollChat();
+}
+
+function removeTyping() {
+    let chat = document.getElementById("chatWindow");
+    if (chat.lastChild && chat.lastChild.classList.contains("typing")) {
+        chat.lastChild.remove();
+    }
+}
+
+/* ✅ Ask question */
+async function ask() {
+    let q = document.getElementById("q").value.trim();
+    if (!q) return;
+
+    addMessage(q, "user");
+    document.getElementById("q").value = "";
+
+    showTyping();
+
+    let res = await fetch("/ask?q=" + encodeURIComponent(q));
+    let data = await res.json();
+
+    removeTyping();
+    addMessage(data.answer, "bot");
+}
+
+/* ✅ Enter key sends */
+document.getElementById("q").addEventListener("keypress", (e) => {
+    if (e.key === "Enter") ask();
+});
+
+/* ✅ Voice recording with waveform animation */
+function startVoice() {
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) return alert("Voice not supported!");
+
+    let rec = new SR();
+    rec.lang = "en-IN";
+    rec.start();
+
+    /* Show waveform */
+    let micBtn = document.getElementById("micBtn");
+    micBtn.innerHTML = `
+        <div class="waveform">
+            <div></div><div></div><div></div><div></div>
+        </div>
+    `;
+
+    rec.onresult = function(event) {
+        document.getElementById("q").value = event.results[0][0].transcript;
+    };
+
+    rec.onend = function() {
+        micBtn.textContent = "🎤";
+    };
+}
+
+/* ✅ Upload PDF / files */
+async function uploadFile() {
+    let file = document.getElementById("fileUpload").files[0];
+    if (!file) return;
+
+    addMessage("📁 Uploading file: " + file.name, "bot");
+    showTyping();
+
+    let form = new FormData();
+    form.append("file", file);
+
+    await fetch("/upload_pdf", { method: "POST", body: form });
+
+    removeTyping();
+    addMessage("✅ File uploaded successfully!", "bot");
+}
+
+/* ✅ New chat */
+function newChat() {
+    currentChat = [];
+    document.getElementById("chatWindow").innerHTML = "";
+}
+</script>
+
+</body>
+</html>
