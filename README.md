@@ -26,14 +26,52 @@ RAG solves these by connecting LLMs to:
 - ✅ Company knowledge bases
 
 ###  RAG Architecture (Simple)
-```
-User Query
-     ↓
-Retriever (search relevant docs)
-     ↓
-LLM (generate answer using docs)
-     ↓
-Final Answer
+  ```  
+                 ┌──────────────────────────────────┐
+                 │            USER QUERY            │
+                 │                                  │
+                 └──────────────────────────────────┘
+                                 │
+                                 ▼
+                     (1) EMBED THE QUERY
+                                 │
+                                 ▼
+         ┌───────────────────────────────────────────────┐
+         │               VECTOR DATABASE                 │
+         │   (Stores embeddings of all documents/chunks) │
+         └───────────────────────────────────────────────┘
+                                 ▲
+                                 │
+                     (2) EMBEDDINGS STORED HERE
+                                 │
+                                 ▼
+    ┌──────────────────────────────────────────────────────────┐
+    │                    RETRIEVAL PROCESS                     │
+    │  - Query embedding compared with stored vectors using    │
+    │    cosine similarity / dot product / Euclidean           │
+    │  - Find Top-K most relevant chunks                       │
+    └──────────────────────────────────────────────────────────┘
+                                 │
+                                 ▼
+          ┌─────────────────────────────────────────────────┐
+          │             TOP-K RELEVANT CHUNKS               │
+          │   (Policies, FAQs, loan rules, documents…)      │
+          └─────────────────────────────────────────────────┘
+                                 │
+                     (3) PASS CONTEXT TO LLM
+                                 │
+                                 ▼
+        ┌────────────────────────────────────────────────────────┐
+        │                 LLM (GPT/Gemini/Claude)                │
+        │  - Reads user query + retrieved chunks                 │
+        │  - Generates grounded, accurate answer                 │
+        └────────────────────────────────────────────────────────┘
+                                 │
+                                 ▼
+              ┌────────────────────────────────────┐
+              │            FINAL ANSWER            │
+              │   “Your loan eligibility depends…” │
+              └────────────────────────────────────┘
 ```
 ## Core Components of RAG
 #### 1️⃣ Document Loader
