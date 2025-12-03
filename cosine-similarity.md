@@ -1,4 +1,4 @@
-### **Sample vector calculations based on the exact values in diagram**.
+## **Sample vector calculations based on the exact values in diagram**.
 
 
 ### **Document Embeddings stored in Vector DB**
@@ -26,7 +26,7 @@ $$
 
 ---
 
-# ✅ **1️⃣ Similarity(Q, A)**
+## **1️⃣ Similarity(Q, A)**
 
 ### Step 1: Dot product
 
@@ -69,9 +69,8 @@ $$
 
 ---
 
-# ✅ **2️⃣ Similarity(Q, B)**
+## **2️⃣ Similarity(Q, B)**
 
-### Similarity(Q, B)
 
 **Dot product**
 
@@ -103,7 +102,7 @@ $$
 
 ---
 
-### ✅ 3️⃣ Similarity(Q, C)
+### 3️⃣ Similarity(Q, C)
 
 **Dot product**
 
