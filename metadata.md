@@ -279,4 +279,203 @@ This is the **original chunk text**, NOT the embedding vector.
 
 ---
 
+# ✅ **When Is Metadata Created in RAG?**
+
+### ✔ Metadata is created at the **chunking stage**
+
+When you split the PDF into chunks, you also create metadata for each chunk:
+
+* filename
+* page number
+* section heading
+* chunk_id
+* tags / labels
+* created date
+* document type
+* category
+
+This metadata is **attached to each chunk** **before** storing into the vector database.
+
+---
+
+# 📦 **Flow: Chunking + Metadata Creation**
+
+### Step 1: Read PDF
+
+### Step 2: Extract text per page
+
+### Step 3: Chunk the text
+
+### Step 4: **Generate metadata for each chunk**
+
+### Step 5: Send (chunk + metadata) to embedding model
+
+### Step 6: Store in vector DB
+
+---
+
+# 🧠 Example: Metadata created during chunking
+
+Suppose you split a 50-page PDF into 200 chunks.
+
+For chunk #37, you generate:
+
+```
+{
+  "chunk_id": "loan_doc_37",
+  "filename": "Bank Loan Policy 2024.pdf",
+  "page": 12,
+  "section": "Interest Rate",
+  "category": "banking",
+  "year": "2024"
+}
+```
+
+This is metadata created **during chunking**.
+
+Then you embed it and store:
+
+```
+collection.add(
+    ids=["loan_doc_37"],
+    documents=["Interest rate ranges from 8% to 9%..."],
+    embeddings=[embedding],
+    metadatas=[{
+      "filename": "Bank Loan Policy 2024.pdf",
+      "page": 12,
+      "section": "Interest Rate",
+      "category": "banking",
+      "year": "2024"
+    }]
+)
+```
+
+---
+
+# 🎯 **Why metadata is created during chunking?**
+
+Because:
+
+### ✔ 1. Chunk needs identity
+
+Each chunk must have an ID (chunk_1, chunk_2...)
+
+### ✔ 2. We want to filter by page/section later
+
+For example:
+
+```
+where={"year": "2024"}
+```
+
+### ✔ 3. We want traceability
+
+If LLM gives wrong answer, we can check which chunk caused it.
+
+### ✔ 4. Helps re-ranking
+
+Metadata helps choose more relevant chunks.
+
+---
+
+# 🔥 YOUR UNDERSTANDING IS CORRECT
+
+> **Chunking produces text chunks + metadata.
+> Embeddings convert text to vectors.
+> Vector DB stores: vector + text + metadata.**
+
+---
+
+
+# ✅ **During retrieval, only the embeddings are used for similarity search.**
+
+But…
+
+👉 **After retrieval**, the vector DB returns:
+
+* the chunk text
+* the metadata
+* the similarity score
+  (back to the LLM)
+
+So **retrieval = embedding matching**,
+**but response = original chunk text**.
+
+Let’s break it down.
+
+---
+
+# 🔍 **Retrieval Process Step-by-Step**
+
+## **Step 1 — User query embedding (vector)**
+
+```
+[0.11, 0.02, 0.90]
+```
+
+## **Step 2 — Compare with stored embeddings**
+
+Vector DB does:
+
+✔ cosine similarity
+✔ dot product
+✔ L2 distance
+(according to index type)
+
+Only **vectors** are compared.
+
+### So YES → during matching, ONLY EMBEDDINGS are used.
+
+---
+
+# 🎯 **Step 3 — After matching, vector DB returns:**
+
+### For top-k chunks, DB returns:
+
+```
+{
+  "id": "chunk_37",
+  "document": "Interest rate ranges from 8% to 9%...",
+  "metadata": { "page": 12, "year": 2024 },
+  "embedding": [0.06, 0.08, 0.9],
+  "score": 0.84
+}
+```
+
+So final result includes:
+
+| Item           | Purpose                            |
+| -------------- | ---------------------------------- |
+| **chunk text** | used by LLM to answer              |
+| **metadata**   | for filtering / reranking          |
+| **embedding**  | used only during similarity search |
+| **score**      | similarity ranking                 |
+
+---
+
+# 🧠 **Short Explanation (Best for Interview)**
+
+### ✔ Retrieval uses only embeddings (vectors) to find similar chunks.
+
+### ✔ But the output of retrieval includes text + metadata + score.
+
+---
+
+# 🎨 Easy Diagram for You
+
+**Query → Embedding → Compare vectors → Get top-k**
+**→ Return text + metadata → LLM → Final answer**
+
+---
+
+# ⭐ Summary
+
+> “During retrieval, only embeddings are used for similarity matching.
+> But after matching, the vector DB returns the actual chunk text and metadata so the LLM can generate the answer.”
+
+---
+
+
+
+
 
