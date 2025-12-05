@@ -1,7 +1,7 @@
 
 
 # ✅ **RAG Architecture**
-
+![alt-text](https://github.com/Manuhd/RAG/blob/main/RAG%20ARCHITECTURE.drawio.png)
 ```
                 ┌────────────────┐
                 │ Knowledge Base │
