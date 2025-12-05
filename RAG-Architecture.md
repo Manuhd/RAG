@@ -2,46 +2,6 @@
 
 # ✅ **RAG Architecture**
 ![alt-text](https://github.com/Manuhd/RAG/blob/main/RAG%20ARCHITECTURE.drawio.png)
-```
-                ┌────────────────┐
-                │ Knowledge Base │
-                └───────┬────────┘
-                        │
-                        ▼
-                ┌────────────────┐
-                │  Data Chunks   │   ← Chunk PDFs / Docs / Website
-                └───────┬────────┘
-                        │
-                        ▼
-                ┌────────────────┐
-                │ Embedding      │
-                │    Model       │   ← Converts text → vectors
-                └───────┬────────┘
-        ┌───────────────┼──────────────────┐
-        │               │                  │
-        ▼               ▼                  ▼
-User Query → Embedding(Query)       Document Embeddings
-                         │
-                         ▼
-                ┌────────────────┐
-                │   Vector DB    │   ← Stores embeddings
-                └───────┬────────┘
-                        │
-                        ▼
-                ┌────────────────┐
-                │ Retrieved Docs │   ← Top-k most similar chunks
-                └───────┬────────┘
-                        │
-                        ▼
-                ┌────────────────┐
-                │      LLM       │   ← GPT / Gemini / Llama
-                └───────┬────────┘
-                        │
-                        ▼
-                ┌────────────────┐
-                │    Response    │
-                └────────────────┘
-```
 
 ---
 
