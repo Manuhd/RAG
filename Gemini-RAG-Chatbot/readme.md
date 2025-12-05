@@ -18,6 +18,10 @@ Modern AI chatbots like ChatGPT work well with general knowledge, but they do no
 
 This project solves that problem by creating a private, secure RAG (Retrieval-Augmented Generation) system that can understand and answer questions using your uploaded PDFs.
 
+# RAG Diagram in my view
+![alt-text](https://github.com/Manuhd/RAG/blob/main/RAG%20ARCHITECTURE.drawio.png)
+
+
 
 ## 🎯 What This Project Does
 
