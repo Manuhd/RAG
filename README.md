@@ -11,7 +11,7 @@ RAG = Search + AI
 
 This avoids hallucinations and makes answers accurate.
 
-![alt-text](https://github.com/Manuhd/RAG/blob/main/rag%20diagram.png)
+![alt-text](https://github.com/Manuhd/RAG/blob/main/RAG%20ARCHITECTURE.drawio.png)
 ### Why RAG is used?
 
 Because LLMs:
