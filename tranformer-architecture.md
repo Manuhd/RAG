@@ -207,3 +207,28 @@ This repeats until the answer is complete.
 13. Predict next token
 
 ---
+
+
+---
+
+# **Transformer Architecture – Steps & Meaning (Table)**
+
+| **Step**                                 | **Meaning (Simple Explanation)**                                                                 |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| **1. Tokenization**                      | Break input text into small units (tokens) like words/subwords.                                  |
+| **2. Embeddings**                        | Convert each token into a numerical vector that represents meaning.                              |
+| **3. Positional Encoding**               | Add position information so model knows order of words.                                          |
+| **4. Create Q, K, V**                    | For each token, compute **Query (Q)**, **Key (K)**, **Value (V)** using learned weight matrices. |
+| **5. Attention Score (Q·K)**             | Calculate similarity between words to know how much each word should focus on another word.      |
+| **6. Softmax**                           | Convert attention scores into probabilities (weights that sum to 1).                             |
+| **7. Weighted Sum of V**                 | Combine value vectors using attention weights to create context-aware representation.            |
+| **8. Multi-Head Attention**              | Repeat attention multiple times in parallel; each head learns different relationships.           |
+| **9. Add & Norm (Residual + LayerNorm)** | Add original input + attention output, then normalize to keep training stable.                   |
+| **10. Feed-Forward Network (FFN)**       | Apply a small neural network to each token for deeper transformation/reasoning.                  |
+| **11. Add & Norm**                       | Add FFN output back to input (residual) and normalize again.                                     |
+| **12. Stack Many Layers**                | Repeat attention + FFN blocks 12–100+ times to increase understanding.                           |
+| **13. Predict Next Token**               | Model generates the next word using learned patterns and context.                                |
+
+---
+
+
