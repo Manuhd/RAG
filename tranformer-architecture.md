@@ -1,11 +1,11 @@
 
-# 🚀 **Transformer Architecture — Step-by-Step**
+# **Transformer Architecture — Step-by-Step**
 
 This is the EXACT internal workflow of an LLM.
 
 ---
 
-# **1️⃣ Input Tokenization**
+## Input Tokenization
 
 The text is broken into tokens.
 
@@ -14,7 +14,7 @@ Example:
 
 ---
 
-# **2️⃣ Convert Tokens → Embeddings**
+## Convert Tokens → Embeddings
 
 Each token becomes a dense vector:
 
@@ -28,7 +28,7 @@ These embeddings capture meaning.
 
 ---
 
-# **3️⃣ Add Positional Encoding**
+## Add Positional Encoding
 
 Transformers do NOT know order.
 So we add positional encoding:
@@ -45,7 +45,7 @@ This tells model:
 
 ---
 
-# **4️⃣ Self-Attention (Q, K, V creation)**
+## Self-Attention (Q, K, V creation)
 
 For each token, the model creates 3 vectors:
 
@@ -65,7 +65,7 @@ This is like converting a word into **what it should focus on**.
 
 ---
 
-# **5️⃣ Attention Score Calculation**
+## Attention Score Calculation
 
 Attention score = **dot product(Q, K)**
 
@@ -78,7 +78,7 @@ Example:
 
 ---
 
-# **6️⃣ Softmax → Normalize Scores**
+## Softmax → Normalize Scores
 
 Softmax converts scores into weights:
 
@@ -92,7 +92,7 @@ These weights sum to 1.
 
 ---
 
-# **7️⃣ Weighted Sum of V**
+## Weighted Sum of V
 
 Final attention output:
 
@@ -105,7 +105,7 @@ This produces a new representation of each word
 
 ---
 
-# **8️⃣ Multi-Head Attention**
+# Multi-Head Attention
 
 The above attention is done **8, 16, 32... times in parallel**.
 
@@ -121,7 +121,7 @@ Outputs are concatenated.
 
 ---
 
-# **9️⃣ Add & Norm (Residual Connection)**
+## Add & Norm (Residual Connection)
 
 To keep training stable:
 
@@ -133,7 +133,7 @@ Residual connections prevent vanishing gradients.
 
 ---
 
-# **🔟 Feed-Forward Network (FFN)**
+## Feed-Forward Network (FFN)
 
 Each token passes through a small neural network:
 
@@ -146,7 +146,7 @@ This adds non-linearity, reasoning, transformation.
 
 ---
 
-# **1️⃣1️⃣ Add & Norm Again**
+## Add & Norm Again
 
 Same structure:
 
@@ -158,7 +158,7 @@ This completes one Transformer **block**.
 
 ---
 
-# **1️⃣2️⃣ Stack 12 → 80+ Layers**
+## Stack 12 → 80+ Layers
 
 A Transformer has many layers.
 
@@ -172,7 +172,7 @@ More layers → more reasoning + memory.
 
 ---
 
-# **1️⃣3️⃣ Decoder Predicts Next Token**
+## Decoder Predicts Next Token
 
 For LLMs (decoder-only):
 
@@ -188,7 +188,6 @@ This repeats until the answer is complete.
 
 ---
 
-# 🎉 **FINAL SUMMARY (Use This in Interviews)**
 
 ### **Transformer Architecture Steps:**
 
