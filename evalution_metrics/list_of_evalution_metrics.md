@@ -15,17 +15,16 @@ Assume:
 
 **What:** Overall correctness
 
-**Formula**
-$$
-Accuracy = \frac{TP + TN}{TP + TN + FP + FN}
-$$
+## ✅ Accuracy
 
-**Example**
+**What:** Overall correctness
 
-* TP=40, TN=50, FP=5, FN=5
-  [
-  Accuracy = \frac{40+50}{100} = 0.90
-  ]
+**Formula:**  
+Accuracy = (TP + TN) / (TP + TN + FP + FN)
+
+**Example:**
+- TP = 40, TN = 50, FP = 5, FN = 5  
+- Accuracy = (40 + 50) / 100 = **0.90**
 
 ---
 
@@ -34,16 +33,16 @@ $$
 **What:** How many predicted positives are correct
 
 **Formula**
-[
+$$
 Precision = \frac{TP}{TP + FP}
-]
+$$
 
 **Example**
 
 * TP=40, FP=10
-  [
+  $$
   Precision = \frac{40}{50} = 0.8
-  ]
+  $$
 
 ---
 
