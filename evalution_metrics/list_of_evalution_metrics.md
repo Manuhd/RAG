@@ -15,9 +15,11 @@ Assume:
 
 **What:** Overall correctness
 
-
 **Formula:**  
-Accuracy = (TP + TN) / (TP + TN + FP + FN)
+
+$$
+Accuracy = \frac{TP + TN}{TP + TN + FP + FN}
+$$
 
 **Example:**
 - TP = 40, TN = 50, FP = 5, FN = 5  
