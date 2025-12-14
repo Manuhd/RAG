@@ -15,9 +15,6 @@ Assume:
 
 **What:** Overall correctness
 
-## ✅ Accuracy
-
-**What:** Overall correctness
 
 **Formula:**  
 Accuracy = (TP + TN) / (TP + TN + FP + FN)
