@@ -106,7 +106,7 @@ A **claim = one factual statement**.
 
 ## Step 3️⃣ Apply the faithfulness formula
 
-[
+$$
 \text{Faithfulness} =
 \frac{\text{Supported claims}}
 {\text{Total claims}}
@@ -114,7 +114,7 @@ A **claim = one factual statement**.
 
 \frac{1}{2}
 = 0.5
-]
+$$
 
 ---
 
