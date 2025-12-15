@@ -126,7 +126,7 @@ Track:
 
 ---
 
-## 🎯 Interview-Ready Answer (Strong)
+## 🎯 Short (Strong)
 
 > **“Cost saving in LLM systems is achieved by reducing tokens, improving retrieval quality, caching responses, routing queries to appropriate models, and preventing unnecessary LLM calls through guardrails and evaluation.”**
 
