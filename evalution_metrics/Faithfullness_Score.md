@@ -110,8 +110,6 @@ $$
 \text{Faithfulness} =
 \frac{\text{Supported claims}}
 {\text{Total claims}}
-=====================
-
 \frac{1}{2}
 = 0.5
 $$
