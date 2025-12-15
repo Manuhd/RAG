@@ -1,6 +1,3 @@
-Below is a **clear, practical cost-saving guide for LLM/RAG systems**, explained in **simple terms + interview-ready language**.
-
----
 
 ## 💰 Key Areas to Improve for Cost Saving
 
