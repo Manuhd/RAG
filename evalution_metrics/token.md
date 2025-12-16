@@ -139,3 +139,94 @@ Answer in max 60 words.
 
 > **Lower tokens = lower cost + faster response.**
 
+Good question 👍
+Let’s calculate tokens **clearly and correctly** for this sentence.
+
+---
+
+## Sentence
+
+```
+Loan tenure is duration for repayment.
+```
+
+---
+
+## ✅ How tokens are calculated (important)
+
+Tokens are **not words** and **not characters**.
+They depend on the **tokenizer used by the model**.
+
+But for **estimation (industry practice)** we use:
+
+> **1 token ≈ 4 characters (English text)**
+
+This is exactly what you’re doing in your project.
+
+---
+
+## 🔢 Step-by-step Calculation (Your Method)
+
+### 1️⃣ Count characters (including spaces & punctuation)
+
+```
+"Loan tenure is duration for repayment."
+```
+
+Character count:
+
+| Part      | Count             |
+| --------- | ----------------- |
+| Loan      | 4                 |
+| space     | 1                 |
+| tenure    | 6                 |
+| space     | 1                 |
+| is        | 2                 |
+| space     | 1                 |
+| duration  | 8                 |
+| space     | 1                 |
+| for       | 3                 |
+| space     | 1                 |
+| repayment | 9                 |
+| .         | 1                 |
+| **Total** | **39 characters** |
+
+---
+
+### 2️⃣ Convert characters → tokens
+
+```
+39 ÷ 4 ≈ 9.75
+```
+
+### ✅ Final token count (rounded)
+
+```
+≈ 10 tokens
+```
+
+---
+
+## 🧠 What Your Project Will Show
+
+If this sentence is:
+
+* **Retrieved context** → ~10 retrieved tokens
+* **LLM output** → ~10 output tokens
+
+That’s why your dashboard numbers look reasonable.
+
+
+---
+
+## 🔑 Final Takeaway
+
+* ✅ Spaces are counted
+* ✅ Punctuation is counted
+* ❌ Tokens ≠ words
+* ❌ Tokens ≠ characters
+
+> **For your sentence: ~10 tokens**
+
+
+
