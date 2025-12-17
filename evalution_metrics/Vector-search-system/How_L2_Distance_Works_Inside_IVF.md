@@ -1,7 +1,11 @@
-### First You need to understand below topic before real real example.
-- Euclidian Distance [Link](https://github.com/Manuhd/RAG/blob/main/evalution_metrics/Vector-search-system/Euclidean_Distance.md)
-- FAISS [Link](https://github.com/Manuhd/RAG/blob/main/evalution_metrics/Vector-search-system/FAISS.md)
-- IVF [Link](https://github.com/Manuhd/RAG/blob/main/evalution_metrics/Vector-search-system/With_IVF.md)
+### Prerequisites – Recommended Reading
+
+Before going through the real-world example, understand the following topics:
+
+- **FAISS Overview** [Link](https://github.com/Manuhd/RAG/blob/main/evalution_metrics/Vector-search-system/FAISS.md)
+- **Euclidian Distance(L2)** [Link](https://github.com/Manuhd/RAG/blob/main/evalution_metrics/Vector-search-system/Euclidean_Distance.md)
+- **IVF(Inverted File Index)** [Link](https://github.com/Manuhd/RAG/blob/main/evalution_metrics/Vector-search-system/With_IVF.md)
+- **L2 with real example** [Link](https://github.com/Manuhd/RAG/blob/main/evalution_metrics/Vector-search-system/understand_L2_with_a_real_RAG_example.md)
 
 
 # How L2 Distance Works Inside IVF (with “What is EMI?” example)
