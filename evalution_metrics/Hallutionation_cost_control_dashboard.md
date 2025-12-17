@@ -1,24 +1,3 @@
-##  **🔍 Quick View – 10 Topics**
-
-1. # **Introduction –** Production-ready RAG system for trustworthy AI\_\_\_\_\_\_\_\_\_\_\_\_2 
-
-2. # **Problem Statement –** Hallucination, high cost, and latency in LLMs\_\_\_\_\_\_\_2 
-
-3. # **RAG Pipeline –** Retrieval → Reranking → Grounded generation\_\_\_\_\_\_\_\_\_\_\_\_\_\_3 
-
-4. # **Reranker Impact –** Cleaner context, fewer tokens, better accuracy\_\_\_\_\_\_\_\_\_\_5 
-
-5. # **Hallucination Control –** Guardrails, faithfulness scoring, self-correction\_\_5 
-
-6. # **Token Optimization –** Small chunks, reranking, token tracking\_\_\_\_\_\_\_\_\_\_6 
-
-7. # **Caching impact –** Reduced spend with acceptable response time\_\_\_\_\_\_\_\_\_\_\_7 
-
-8. # **Cost Reduction Strategy–** Reliable, scalable, and cost-efficient AI system\_\_8 
-
-9. # **Tech Stack & Frameworks –** Python, Streamlit, FAISS, Gemini\_\_\_\_\_\_\_\_\_\_9 
-
-10. # **General Guidelines for Acceptable Rates\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_**10
 
 ### 
 
