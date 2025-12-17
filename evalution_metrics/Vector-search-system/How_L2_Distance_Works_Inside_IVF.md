@@ -161,7 +161,7 @@ Everything else stays the same.
 
 ---
 
-# IVF + L2 when `nprobe = 2` (with “What is EMI?”)
+## IVF + L2 when `nprobe = 2` (with “What is EMI?”)
 
 ---
 
