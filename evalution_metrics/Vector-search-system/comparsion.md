@@ -73,11 +73,10 @@ but they are **not the same kind of tool**.
 
 ---
 
-## 🎯 Interview-Ready Explanation
+## 🎯 Explanation
 
 > **“All four support vector search, but FAISS is a low-level library, while ChromaDB, Weaviate, and Pinecone are vector databases that handle persistence, filtering, and scaling.”**
 
-That answer is **perfect**.
 
 ---
 
