@@ -1,3 +1,202 @@
+##  What HNSW Is 
+
+**HNSW searches a graph of vectors instead of scanning all vectors.**
+
+Each node = one FAQ question embedding
+Edges = “similar questions”
+
+---
+
+## 📄 Example Dataset (Simplified)
+
+Assume these questions are embedded:
+
+| ID | Question               |
+| -- | ---------------------- |
+| Q1 | What is EMI?           |
+| Q2 | What is loan tenure?   |
+| Q3 | What is interest rate? |
+| Q4 | How is EMI calculated? |
+| Q5 | What is a home loan?   |
+
+Each question → **vector in high-dim space**
+
+---
+
+## 🏗️ How HNSW Index Is Built (Before Query)
+
+### Step 1️⃣ Multi-layer graph
+
+HNSW builds **layers**:
+
+```
+Layer 2 (very small, sparse)
+Layer 1
+Layer 0 (dense, most nodes)
+```
+
+* Top layers → fewer nodes
+* Bottom layer → all vectors
+
+---
+
+### Step 2️⃣ Connect similar questions
+
+For example:
+
+```
+"What is EMI?"  ↔  "How is EMI calculated?"
+"What is loan tenure?" ↔ "What is interest rate?"
+```
+
+Each node keeps up to **M neighbors** (e.g., 32).
+
+---
+
+## 🔍 Now the Query: **“What is EMI?”**
+
+### Step 1️⃣ Embed the query
+
+```text
+"What is EMI?"
+→ query_vector
+```
+
+---
+
+## 🚀 HNSW Search Process (Actual Calculation Flow)
+
+### 🔹 Step 2️⃣ Start at TOP layer
+
+HNSW starts at a **random or entry node** at the highest layer.
+
+Example entry:
+
+```
+"What is loan tenure?"
+```
+
+---
+
+### 🔹 Step 3️⃣ Greedy navigation
+
+At this layer, HNSW:
+
+1. Computes distance(query, current node)
+2. Checks neighbors
+3. Moves to the **closest neighbor**
+
+Example:
+
+```
+Distance(query, "loan tenure") = high
+Distance(query, "interest rate") = high
+Distance(query, "EMI") = LOW  ✅
+```
+
+➡️ Move closer to EMI-related nodes
+
+---
+
+### 🔹 Step 4️⃣ Move DOWN layers
+
+Once no closer node exists:
+
+* Drop to next layer
+* Repeat greedy search
+
+This continues until **Layer 0**.
+
+---
+
+### 🔹 Step 5️⃣ efSearch kicks in
+
+`efSearch = 50` means:
+
+> “Explore up to 50 candidate nodes before deciding.”
+
+So HNSW:
+
+* Maintains a **candidate list**
+* Continuously refines nearest neighbors
+
+---
+
+### 🔹 Step 6️⃣ Return Top-K
+
+Final result (top-3):
+
+```
+1. What is EMI?            ✅
+2. How is EMI calculated?
+3. What is loan tenure?
+```
+
+---
+
+## 🎯 Key Point (Why HNSW Is Fast)
+
+❌ Flat search:
+
+```
+Compare query with ALL questions
+```
+
+✅ HNSW:
+
+```
+Jump across graph → only visit ~50 nodes
+```
+
+That’s why it’s **much faster**.
+
+---
+
+## 🔧 Where Distance Is Actually Calculated
+
+Distance (L2 or cosine) is calculated:
+
+* Only for **visited nodes**
+* Not for entire dataset
+
+That’s the optimization.
+
+---
+
+## 🧪 What Happens If efSearch Is LOW?
+
+### efSearch = 10
+
+* Fewer nodes explored
+* Might miss `"What is EMI?"`
+* Recall may drop ❌
+
+### efSearch = 50
+
+* More exploration
+* Correct result found ✅
+
+---
+
+## 🧠 One-Line Mental Model
+
+> **“HNSW walks a similarity graph from coarse to fine layers to quickly reach the nearest neighbors of a query.”**
+
+---
+
+## 🎯  Explanation
+
+> “For a query like ‘What is EMI?’, HNSW navigates a multi-layer graph of embeddings, greedily moving toward closer vectors while limiting search to efSearch candidates, instead of scanning the entire dataset.”
+
+---
+
+## 🔑 Final Takeaways
+
+* HNSW ≠ clustering
+* HNSW ≠ full scan
+* Graph-based navigation
+* efSearch controls accuracy vs speed
+* Used in **Weaviate, Milvus, Pinecone (internally)**
 
 ## 🧠 HNSW – Visual Intuition (Graph View)
 
