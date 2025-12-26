@@ -23,7 +23,7 @@ C = [0.03, 0.04, 0.50]
 
 ---
 
-# ✅ **1️⃣ Euclidean Distance: Q ↔ A**
+## **1️⃣ Euclidean Distance: Q ↔ A**
 
 $$
 d(Q,A)=\sqrt{(0.11-0.06)^2 + (0.02-0.08)^2 + (0.90-0.90)^2}
@@ -38,7 +38,7 @@ $$
 
 ---
 
-# ✅ **2️⃣ Euclidean Distance: Q ↔ B**
+## **2️⃣ Euclidean Distance: Q ↔ B**
 
 $$
 d(Q,B)=\sqrt{(0.11-0.10)^2 + (0.02-0.8)^2 + (0.90-0.90)^2}
@@ -53,7 +53,7 @@ $$
 
 ---
 
-# ✅ **3️⃣ Euclidean Distance: Q ↔ C**
+## **3️⃣ Euclidean Distance: Q ↔ C**
 
 $$
 d(Q,C)=\sqrt{(0.11-0.03)^2 + (0.02-0.04)^2 + (0.90-0.50)^2}
@@ -68,7 +68,7 @@ $$
 
 ---
 
-# ⭐ **Final Euclidean Ranking**
+## ⭐ **Final Euclidean Ranking**
 
 | Pair    | Distance  | Similarity Meaning        |
 | ------- | --------- | ------------------------- |
@@ -78,7 +78,7 @@ $$
 
 ---
 
-# 🎯 **Which chunk would retriever pick using Euclidean Distance?**
+### 🎯 **Which chunk would retriever pick using Euclidean Distance?**
 
 If **K = 2**, retriever returns:
 
