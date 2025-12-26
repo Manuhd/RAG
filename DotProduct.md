@@ -17,7 +17,7 @@ C = [0.03, 0.04, 0.50]
 
 ---
 
-# ✅ **1️⃣ Dot Product: Q · A**
+## **1️⃣ Dot Product: Q · A**
 
 $$
 (0.11 \times 0.06) + (0.02 \times 0.08) + (0.90 \times 0.90)
@@ -30,7 +30,7 @@ $$
 
 ---
 
-# ✅ **2️⃣ Dot Product: Q · B**
+## **2️⃣ Dot Product: Q · B**
 
 $$
 (0.11 \times 0.10) + (0.02 \times 0.80) + (0.90 \times 0.90)
@@ -43,7 +43,7 @@ $$
 
 ---
 
-# ✅ **3️⃣ Dot Product: Q · C**
+## **3️⃣ Dot Product: Q · C**
 
 $$
 (0.11 \times 0.03) + (0.02 \times 0.04) + (0.90 \times 0.50)
@@ -56,7 +56,7 @@ $$
 
 ---
 
-# ⭐ **Dot Product Ranking**
+## ⭐ **Dot Product Ranking**
 
 | Pair    | Dot Product | Meaning               |
 | ------- | ----------- | --------------------- |
@@ -66,15 +66,13 @@ $$
 
 ---
 
-# 🎯 Perfect Explanation for README
-
 > Dot Product measures how much two vectors “point in the same direction.”
 > Higher value = more similar.
 > Dot Product considers **magnitude**, unlike cosine.
 
 ---
 
-# 🚀 Summary Across All 3 Metrics
+## 🚀 Summary Across All 3 Metrics
 
 | Metric                 | Best Match | Notes                             |
 | ---------------------- | ---------- | --------------------------------- |
