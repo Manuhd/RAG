@@ -133,7 +133,7 @@ $$
 
 ---
 
-# ⭐ FINAL RESULT (Ranking)
+## ⭐ FINAL RESULT (Ranking)
 
 | Document | Similarity | Rank |
 | -------- | ---------- | ---- |
@@ -143,7 +143,7 @@ $$
 
 ---
 
-# 🎯 **Top-K Retrieved Docs (K = 2)**
+## 🎯 **Top-K Retrieved Docs (K = 2)**
 
 1️⃣ C
 2️⃣ A
