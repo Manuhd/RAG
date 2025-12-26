@@ -6,15 +6,17 @@ $$
 Q \cdot D = \sum Q_i \times D_i
 $$
 
-Your vectors:
-
+### Document Embeddings stored in Vector DB
 ```
-Q = [0.11, 0.02, 0.90]
+
 A = [0.06, 0.08, 0.90]
 B = [0.10, 0.80, 0.90]
 C = [0.03, 0.04, 0.50]
 ```
-
+### Query Embedding
+```
+Q = [0.11, 0.02, 0.90]
+```
 ---
 
 ## **1️⃣ Dot Product: Q · A**
