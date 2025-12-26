@@ -1,4 +1,4 @@
-## **Sample vector calculations based on the exact values in diagram**.
+# **Cosine Similarty**.
 
 
 ### **Document Embeddings stored in Vector DB**
