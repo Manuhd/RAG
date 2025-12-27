@@ -141,19 +141,24 @@ $$
 
 ## 🎯 **Top-K Retrieved Docs (K = 2)**
 
-1️⃣ C
-2️⃣ A
+- 1️⃣ C
+- 2️⃣ A
 
 These two chunks are sent to the LLM.
 
 ---
+
+## Python Code
 ```
 import math
+
 db = [
     [0.06, 0.08, 0.9],   # A
     [0.10, 0.8, 0.9],    # B
     [0.03, 0.04, 0.5]    # C
 ]
+
+labels = ["A", "B", "C"]
 
 q = [0.11, 0.02, 0.90]
 
@@ -165,7 +170,8 @@ def cosine_similarity(vec1, vec2):
     return dot_product / (magnitude1 * magnitude2)
 
 
-for i, vec in enumerate(db):
+for label, vec in zip(labels, db):
     score = cosine_similarity(q, vec)
-    print(f"Similarity with db[{i}] = {score}")
+    print(f"Similarity with (Q, {label}) = {score}")
+
 ```
