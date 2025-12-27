@@ -49,7 +49,7 @@ $$
 = **0.0781**
 $$
 
-👉 **Very close** (high similarity)
+👉 **0.0781** - **Very close** (high similarity)
 
 ---
 
@@ -75,7 +75,7 @@ $$
 **0.7799**
 $$
 
-👉 **Far** (low similarity)
+👉 **0.7799** - **Far** (low similarity)
 
 ---
 
@@ -101,7 +101,7 @@ $$
 **0.408**
 $$
 
-👉 **0.408** Somewhat far (medium similarity)
+👉 **0.408** - Somewhat far (medium similarity)
 
 ---
 
