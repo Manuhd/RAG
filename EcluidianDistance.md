@@ -119,6 +119,29 @@ $$
 
 If **K = 2**, retriever returns:
 
-1️⃣ **A** (closest)
-2️⃣ **C**
+- 1️⃣ **A** (closest)
+- 2️⃣ **C**
+---
+## Python code
+
+```
+import math
+
+labels = ["A", "B", "C"]
+db = [
+    [0.06, 0.08, 0.9],   # A
+    [0.10, 0.8, 0.9],    # B
+    [0.03, 0.04, 0.5]    # C
+]
+
+q = [0.11, 0.02, 0.90]
+
+def euclidean_distance(vec1, vec2):
+    return math.sqrt(sum((a - b) ** 2 for a, b in zip(vec1, vec2)))
+
+for label, vec in zip(labels, db):
+    dist = euclidean_distance(q, vec)
+    print(f"Distance between (Q, {label}) = {dist}")
+
+```
 
