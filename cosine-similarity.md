@@ -147,4 +147,25 @@ $$
 These two chunks are sent to the LLM.
 
 ---
+```
+import math
+db = [
+    [0.06, 0.08, 0.9],   # A
+    [0.10, 0.8, 0.9],    # B
+    [0.03, 0.04, 0.5]    # C
+]
 
+q = [0.11, 0.02, 0.90]
+
+
+def cosine_similarity(vec1, vec2):
+    dot_product = sum(a * b for a, b in zip(vec1, vec2))
+    magnitude1 = math.sqrt(sum(a * a for a in vec1))
+    magnitude2 = math.sqrt(sum(b * b for b in vec2))
+    return dot_product / (magnitude1 * magnitude2)
+
+
+for i, vec in enumerate(db):
+    score = cosine_similarity(q, vec)
+    print(f"Similarity with db[{i}] = {score}")
+```
