@@ -176,5 +176,4 @@ for label, vec in zip(labels, db):
 
 ```
 
-![Image](https://github.com/Manuhd/RAG/blob/main/evalution_metrics/cosine-similarity.jpg)
-
+![Image](https://github.com/Manuhd/RAG/blob/main/Cosine_sim.png)
