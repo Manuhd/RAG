@@ -175,3 +175,6 @@ for label, vec in zip(labels, db):
     print(f"Similarity with (Q, {label}) = {score}")
 
 ```
+
+![Image](https://github.com/Manuhd/RAG/blob/main/evalution_metrics/cosine-similarity.jpg)
+
