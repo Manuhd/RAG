@@ -122,6 +122,53 @@ If **K = 2**, retriever returns:
 - 1️⃣ **A** (closest)
 - 2️⃣ **C**
 ---
+
+
+##  Convert **distance → similarity** 
+
+### formula:
+
+$$
+\text{similarity} = \frac{1}{1 + \text{distance}}
+$$
+
+### How each was calculated
+
+* **Q–A**
+  
+$$
+  \frac{1} {(1 + 0.078)} \approx 0.928
+$$
+
+* **Q–C**
+
+$$
+  \frac{1} {(1 + 0.408)} \approx 0.710
+$$
+
+* **Q–B**
+
+$$
+  \frac{1} {(1 + 0.780)} \approx 0.562
+$$
+
+---
+
+### Converted values
+
+| Pair    |  Distance | Similarity | Meaning                   |
+| ------- | --------: | ---------: | ------------------------- |
+| **Q–A** | **0.078** |  **0.928** | 🥇 Closest → MOST similar |
+| **Q–C** | **0.408** |  **0.710** | 🥈 Medium similarity      |
+| **Q–B** | **0.780** |  **0.562** | 🥉 Least similar          |
+
+---
+
+## Key takeaway
+
+> “By converting distance to similarity using `1 / (1 + distance)`, we normalize scores to a 0–1 range where higher values mean more similar.”
+
+
 ## Python code
 
 ```
@@ -144,4 +191,28 @@ for label, vec in zip(labels, db):
     print(f"Distance between (Q, {label}) = {dist}")
 
 ```
+## Distance + similarity
+```
+import math
 
+labels = ["A", "B", "C"]
+db = [
+    [0.06, 0.08, 0.9],   # A
+    [0.10, 0.8, 0.9],    # B
+    [0.03, 0.04, 0.5]    # C
+]
+
+q = [0.11, 0.02, 0.90]
+
+def euclidean_distance(vec1, vec2):
+    return math.sqrt(sum((a - b) ** 2 for a, b in zip(vec1, vec2)))
+
+for label, vec in zip(labels, db):
+    dist = euclidean_distance(q, vec)
+    similarity = 1 / (1 + dist)
+    print(
+        f"Distance between (Q, {label}) = {dist:.3f}, "
+        f"Similarity = {similarity:.3f}"
+    )
+
+```
